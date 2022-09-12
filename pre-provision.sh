@@ -18,6 +18,7 @@ chmod 600 $HOME/.ssh/id_rsa
 curl -L -O "https://raw.githubusercontent.com/nullpo-head/wsl-distrod/main/install.sh"
 chmod +x install.sh
 sudo ./install.sh install && echo -e $(pwd)"/pre-provision.sh" >> $HOME/.pre-provision-done
+sudo /opt/distrod/bin/distrod enable
 rm -f install.sh
 
 if [ -f $HOME/.pre-provision-done ]; then
