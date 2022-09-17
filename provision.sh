@@ -22,12 +22,13 @@ echo
 echo "-----------------------------------------------------"
 echo "---------------> Installing Docker CE <--------------"
 # Workaround to start docker service: revert to iptables-legacy: https://github.com/docker/for-linux/issues/1406
+echo -e "\n\tSelect iptables-legacy below (https://github.com/docker/for-linux/issues/1406):\n"
 sudo update-alternatives --config iptables
 # https://docs.docker.com/engine/install/ubuntu/
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get -q update
-sudo apt-get -q install -y docker-ce=5:20.10.17~3-0~ubuntu-jammy docker-ce-cli=5:20.10.17~3-0~ubuntu-jammy containerd.io
+sudo apt-get -q install -y docker-ce=5:20.10.17~3-0~ubuntu-$(lsb_release -cs) docker-ce-cli=5:20.10.17~3-0~ubuntu-$(lsb_release -cs) containerd.io
 # enable the docker service at startup (and start right now)
 sudo systemctl enable --now docker
 sudo systemctl daemon-reload
