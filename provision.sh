@@ -49,11 +49,11 @@ echo
 echo "-------------------------------------------------"
 echo "---------------> Installing ZSH <----------------"
 sudo apt install -yq zsh
-# sudo chsh -s /usr/bin/zsh $USER   # set as default shell
+sudo chsh -s /usr/bin/zsh $USER   # set as default shell
 if [ -d ~/.oh-my-zsh ]; then
     echo -e "oh-my-zsh is already installed\n"
 else
-    zsh $SOURCE_FOLDER/local-vm/scripts/tools/ohmyzsh.sh
+    zsh ohmyzsh.sh
 fi
 
 echo
