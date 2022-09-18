@@ -20,6 +20,9 @@ fi
 
 # Install custom plugins
 echo -e "Installing custom plugins\n"
+
+sudo apt install zoxide
+
 if [ -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
     cd ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions && git pull
 else
@@ -51,7 +54,7 @@ else
 fi
 
 # activate plugins
-sed -i.bak 's/\(^plugins=([^)]*\)/\1 git docker nvm colored-man-pages z k zsh-syntax-highlighting zsh-autosuggestions/' $HOME/.zshrc
+sed -i.bak 's/\(^plugins=([^)]*\)/\1 aliases themes git docker nvm colored-man-pages zoxide k zsh-syntax-highlighting zsh-autosuggestions/' $HOME/.zshrc
 
 # Install custom spaceship theme
 echo -e "\nInstalling custom themes\n"
