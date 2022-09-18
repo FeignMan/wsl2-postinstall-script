@@ -14,7 +14,7 @@ fi
 echo
 echo "-------------------------------------------------"
 echo "------> Installing Utilities/Dependencies <------"
-sudo apt-get -q install -y --fix-missing wget git vim python3-pip jq curl snapd tree htop apt-transport-https ca-certificates gnupg-agent software-properties-common libssl-dev unzip figlet lolcat bat
+sudo apt-get -q install -y --fix-missing wget git vim python3-pip jq curl snapd tree htop apt-transport-https ca-certificates gnupg-agent software-properties-common libssl-dev unzip figlet lolcat bat upower
 sudo pip3 install --upgrade pip yq
 echo "Done! ✓"
 

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-THEME="zeta"
+THEME="spaceship"
 CURRENT_DIR=$PWD
 
 function set_theme {
@@ -64,6 +64,10 @@ if [ -d ~/.oh-my-zsh/custom/themes/spaceship-prompt ]; then
 else
     git clone --depth=1 https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt
     ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
+    #   https://spaceship-prompt.sh/config/intro/
+    mkdir -p $HOME/.config/spaceship && echo -e "SPACESHIP_TIME_SHOW=true" > $HOME/.config/spaceship/spaceship.zsh
+    echo "SPACESHIP_BATTERY_SHOW=always" >> $HOME/.config/spaceship/spaceship.zsh
+    echo "SPACESHIP_USER_SHOW=always" >> $HOME/.config/spaceship/spaceship.zsh
 fi
 cd $CURRENT_DIR
 
