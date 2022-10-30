@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 THEME="spaceship"
 CURRENT_DIR=$PWD
@@ -7,7 +7,12 @@ function set_theme {
   sed -i.bak -e "s/^ZSH_THEME=[\"']\{0,1\}[A-Za-z0-9\._-]*[\"']\{0,1\}/ZSH_THEME=\"$1\"/1" $HOME/.zshrc
 }
 
-echo -e "Installing oh-my-zsh\n"
+# Install ZSH
+echo -e "\nInstalling ZSH\n"
+sudo apt install -yq zsh
+sudo chsh -s /usr/bin/zsh $USER   # set as default shell
+
+echo -e "\nInstalling oh-my-zsh\n"
 
 if [ -d ~/.oh-my-zsh ]; then
     echo -e "oh-my-zsh is already installed\n"
