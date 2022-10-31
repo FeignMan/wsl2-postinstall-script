@@ -21,6 +21,10 @@ sudo ./install.sh install && echo -e $(pwd)"/pre-provision.sh" >> $HOME/.pre-pro
 sudo /opt/distrod/bin/distrod enable
 rm -f install.sh
 
+# Install ZSH
+sudo apt install -yq zsh
+sudo chsh -s /usr/bin/zsh $USER   # set as default shell
+
 if [ -f $HOME/.pre-provision-done ]; then
     cp $HOME/.bashrc $HOME/.bashrc.bak
     echo -e "\ncd\nif [ -f ~/.pre-provision-done ]; then\n. $(pwd)/provision.sh\nexit 0\nfi\n" >> $HOME/.bashrc
