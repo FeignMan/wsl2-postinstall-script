@@ -72,7 +72,7 @@ echo "-------------------------------------------------"
 echo "--------> Installing google-cloud-cli <----------"
 curl -o ~/bin/google-cloud-cli-407.0.0-linux-x86_64.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-407.0.0-linux-x86_64.tar.gz
 tar -xf ~/bin/google-cloud-cli-407.0.0-linux-x86_64.tar.gz -C ~/bin/
-bash ~/bin/google-cloud-sdk/install.sh -q
+bash ~/bin/google-cloud-sdk/install.sh --usage-reporting false --rc-path /home/ishan/.zshrc --command-completion true --path-update true --quiet
 
 echo -e "\n\033[92mProvisioning complete! \033[0m"
 echo -e "Press any key to shutdown..."
