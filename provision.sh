@@ -17,7 +17,7 @@ echo "------> Installing Utilities/Dependencies <------"
 sudo apt-get -q install -y --fix-missing wget git vim python3-pip jq curl snapd tree htop apt-transport-https ca-certificates gnupg-agent software-properties-common libssl-dev unzip figlet lolcat bat upower
 sudo pip3 install --upgrade pip yq
 # Installing google-cloud-cli
-curl -O ~/bin/google-cloud-cli-407.0.0-linux-x86_64.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-407.0.0-linux-x86_64.tar.gz
+curl -o ~/bin/google-cloud-cli-407.0.0-linux-x86_64.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-407.0.0-linux-x86_64.tar.gz
 tar -xf google-cloud-cli-407.0.0-linux-x86.tar.gz -C ~/bin/
 bash /bin/google-cloud-sdk/install.sh -q
 echo "Done! ✓"
@@ -52,7 +52,8 @@ echo "Done! ✓"
 echo
 echo "-------------------------------------------------"
 echo "------------> Installing oh-my-zsh <-------------"
-bash ohmyzsh.sh
+echo $(pwd)
+bash ~/wsl2-postinstall-script/ohmyzsh.sh
 
 echo
 echo "-------------------------------------------------"
