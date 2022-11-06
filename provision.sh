@@ -19,6 +19,12 @@ sudo pip3 install --upgrade pip yq
 echo "Done! ✓"
 
 echo
+echo "-------------------------------------------------"
+echo "--------> Installing GCC/GDB Toolchain <---------"
+sudo apt-get -q install -y build-essential gdb
+echo "Done! ✓"
+
+echo
 echo "-----------------------------------------------------"
 echo "---------------> Installing Docker CE <--------------"
 # Workaround to start docker service: revert to iptables-legacy: https://github.com/docker/for-linux/issues/1406
