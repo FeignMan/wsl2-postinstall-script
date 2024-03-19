@@ -1,5 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC1090
+declare repoRoot
 
 if [ -d "$HOME/bin" ]; then
   PATH="$PATH:$HOME/bin"
@@ -11,7 +12,7 @@ fi
 eval "$(ssh-agent -t 1800 -s)"
 
 # Setup environment variables
-declare repoRoot=$(dirname "${BASH_SOURCE[0]}")             # "${BASH_SOURCE[0]}" refers to the currently executing script even if it's sourced
+repoRoot=$(dirname "${BASH_SOURCE[0]}")             # "${BASH_SOURCE[0]}" refers to the currently executing script even if it's sourced
 [ -f "$repoRoot/env.sh" ] && source "$repoRoot/env.sh"
 [ -d "${HOME}/.bash_it" ] && source "${repoRoot}/scripts/bash-it/bash-it.rc.sh"
 

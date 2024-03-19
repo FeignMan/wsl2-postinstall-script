@@ -1,19 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
+# shellcheck source=scripts/shell-utils.sh
 source "${LOCAL_REPO_PATH}/scripts/shell-utils.sh"
+
+declare -r NVM_VERSION="v0.39.1" NVM_DIR="${HOME}/bin/nvm"
+declare -r DOCKER_VERSION="5:25.0.4-1" DOCKER_COMPOSE_VERSION="v2.24.7"
 
 export DEBIAN_FRONTEND=noninteractive
 export DEBCONF_NONINTERACTIVE_SEEN=true
 export DEBIAN_PRIORITY=critical
 sudo dpkg-reconfigure debconf --frontend noninteractive
-
-NVM_VERSION="v0.39.1"
-NODE_VERSION="20.11.1"
-NVM_DIR="/usr/local/nvm"
-
-DOCKER_VERSION="5:25.0.4-1"
-DOCKER_COMPOSE_VERSION="v2.24.7"
 
 printBanner "        Provisioning Started           " "-"
 
@@ -106,8 +103,12 @@ sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packa
 && sudo apt install gh -yqq
 
 printBanner "            Installing: NVM            " "-"
-URL=$(printf "https://raw.githubusercontent.com/nvm-sh/nvm/%s/install.sh" $NVM_VERSION)
-curl -o- $URL | bash
+declare NVM_URL
+NVM_URL=$(printf "https://raw.githubusercontent.com/nvm-sh/nvm/%s/install.sh" $NVM_VERSION)
+curl -o- "$NVM_URL" | NVM_DIR="$NVM_DIR" bash
+# shellcheck disable=SC1091
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm install --lts
 
 # "----------> Installing: fx <------------"
 printBanner "            Installing: fx             " "-"
