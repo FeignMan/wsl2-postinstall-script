@@ -57,7 +57,7 @@ sudo systemctl enable --now docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 # systemctl show --property=Environment docker    # show docker environment variables
-sudo usermod -aG docker $USER                   # add the user to the docker group
+sudo usermod -aG docker "$USER"                   # add the user to the docker group
 echo "Done! ✓"
 
 echo
@@ -117,7 +117,6 @@ mv "$HOME/fx-linux" "$HOME/bin/fx"
 chmod +x "$HOME/bin/fx"
 echo "Done! ✓"
 
-
 # "-----------> Installing kdash & k9s <------------"
 printBanner "       Installing: kdash & k9s         " "-"
 curl https://raw.githubusercontent.com/kdash-rs/kdash/main/deployment/getLatest.sh | sudo bash
@@ -154,6 +153,9 @@ sudo dpkg-reconfigure debconf --frontend dialog --priority critical
 # source custom bashrc.sh file on login
 line="source ${LOCAL_REPO_PATH}/bashrc.sh"
 grep -qF -- "$line" "$HOME/.bashrc" || echo -e "\n$line" >> "$HOME/.bashrc"
+
+printBanner "      Setting up Git       " "-"
+bash "${LOCAL_REPO_PATH}/scripts/configure-git.sh"
 
 printBanner " VM Provisioning Completed " "*"
 echo -e "\e"

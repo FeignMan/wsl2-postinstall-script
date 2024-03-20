@@ -9,6 +9,12 @@ export BASH_IT_THEME="atomic"
 export BASH_IT_CUSTOM="${VM_SCRIPTS_PATH}/bash-it"
 export EDITOR="code"
 
+export GITHUB_TOKEN_PATH="${PRIVATE_FOLDER_PATH}/github-personalAccessToken"
+if [ -f "$GITHUB_TOKEN_PATH" ]; then
+    GITHUB_TOKEN=$(cat "${GITHUB_TOKEN_PATH}")
+    export GITHUB_TOKEN
+fi
+
 # alias gitUpdate='. ${VM_SCRIPTS_PATH}/gitCloneGroup.sh --pull'
 # alias gitQuickUpdate='gitUpdate --skip-datascience-repos'
 alias gotoRepoRoot='cd $(git rev-parse --show-toplevel)'
