@@ -25,7 +25,7 @@ sudo apt -yqq update && sudo apt -yqq upgrade && echo "Done! ✓"
 
 # "------> Installing Utilities/Dependencies <------"
 printBanner "   Installing Utilities/Dependencies   " "-"
-sudo apt -yqq install --fix-missing wget git vim python3-pip jq curl snapd tree htop apt-transport-https ca-certificates gnupg-agent software-properties-common libssl-dev unzip figlet lolcat cowsay bat
+sudo apt -yqq install --fix-missing wget git vim python3-pip jq curl snapd tree htop apt-transport-https ca-certificates gnupg-agent software-properties-common libssl-dev unzip figlet lolcat cowsay bat ripgrep
 sudo pip3 install --quiet --upgrade pip yq
 echo "Done! ✓"
 
