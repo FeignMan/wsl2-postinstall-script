@@ -102,6 +102,12 @@ sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packa
 && sudo apt -qq update \
 && sudo apt install gh -yqq
 
+# Install lazygit
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit && rm lazygit.tar.gz
+sudo install lazygit /usr/local/bin && rm -rf lazygit
+
 printBanner "            Installing: NVM            " "-"
 declare NVM_URL
 NVM_URL=$(printf "https://raw.githubusercontent.com/nvm-sh/nvm/%s/install.sh" $NVM_VERSION)
